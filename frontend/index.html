@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zero AI | Phi-2 + QLoRA</title>
+
+    <!-- 1. Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 2. Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 3. Marked.js -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- 4. DOMPurify -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+
+    <!-- 5. Highlight.js -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body
+    class="bg-gray-100 text-gray-900 min-h-screen flex flex-col items-center p-4 selection:bg-blue-500/30"
+  >
+    <div
+      class="w-full max-w-3xl flex flex-col h-[90vh] bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-gray-200"
+    >
+      <header
+        class="bg-white/50 p-4 border-b border-gray-200 flex items-center justify-center space-x-3"
+      >
+        <svg
+          class="w-7 h-7 text-blue-600"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 16.5V21m3.75-18v1.5m0 16.5V21m-9-6.75h1.5m15 0h-1.5m-12-3.75h1.5m15 0h-1.5M12 6.75h1.5m-1.5 6h1.5m-1.5 3.75h1.5m3.75-6h1.5m-1.5-3.75h1.5m-1.5 6h1.5"
+          />
+        </svg>
+        <h1 class="text-2xl font-bold text-gray-900">
+          Zero AI (Phi-2 + QLoRA)
+        </h1>
+      </header>
+
+      <main id="chat-window" class="flex-1 p-6 space-y-6 overflow-y-auto">
+        <div class="chat-message bot flex">
+          <div
+            class="message-bubble p-4 bg-blue-600 text-white rounded-2xl rounded-bl-none max-w-xl shadow-lg"
+          >
+            <p>
+              Hi! I'm Zero, an AI Assistant. Please feel free to ask any
+              questions.
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="p-4 bg-white/50 border-t border-gray-200">
+        <form id="chat-form" class="flex items-center space-x-4">
+          <textarea
+            id="prompt-input"
+            rows="2"
+            class="flex-1 p-3 bg-white rounded-xl border border-gray-300 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400 text-gray-900"
+            placeholder="Ketik pesan Anda di sini... (Shift+Enter untuk baris baru)"
+          ></textarea>
+          <button
+            type="submit"
+            id="send-button"
+            class="p-3 bg-blue-600 rounded-xl text-white font-semibold hover:bg-blue-700 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.875L6 12z"
+              />
+            </svg>
+          </button>
+        </form>
+      </footer>
+    </div>
+
+    <script src="/static/main.js"></script>
+  </body>
+</html>
