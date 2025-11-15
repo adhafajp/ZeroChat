@@ -37,7 +37,7 @@ function startTypingAnimation () {
       clearInterval(typingInterval)
       isTyping = false
     }
-  }, 10)
+  }, 35)
 }
 
 chatForm.addEventListener('submit', async e => {
