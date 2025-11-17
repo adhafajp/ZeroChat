@@ -42,20 +42,31 @@ The model was fine-tuned on a curated combination of:
 
 ## 🧮 Training Phases
 
+The fine tuning consist of multiple stage experiment
+
+Stage 1:
+
 | Phase | Summary | Runtime |
 |--------|----------|----------|
-| **1A** | Initial fine-tune (cancelled due to validation overfit) | 11h 50m |
-| **1B** | Main 2-epoch fine-tune on Alpaca + SQuAD + persona | 5d 11h 50m |
-| **1C** | Re-train on reduced dataset (underfit) | 19h |
-| **1D / 1E** | Refinement with dataset packing and oversampling | ~3d total |
-| **1F** | Final adapter re-train (balanced persona dataset, stable generalization) | 1d 5h |
+| **1A** | Initial fine-tune (canceled due to overfitting) | 11h 50m |
+| **1B** | Full 2-epoch fine-tune on Alpaca + SQuADv2 + persona | 5d 11h 50m |
+| **1C** | Small re-train (underfit) | 19h |
+| **1D / 1D-A / 1E** | Refinement attempts with packing & oversampling | ~3d total |
+| **1F** | Final adapter re-train from **1B** (expanded persona dataset, balanced oversampling) | 1d 5h |
 
-The final released adapter corresponds to **Phase 1F**, providing stable balance across **reasoning**, **instruction-following**, and **identity consistency**.
+Stage 2:
+
+After gathering all the insights from the initial experiments (1A-1F), fine-tuning was restarted completely from scratch. By applying all the lessons learned, this new training process achieved better and more balanced performance in just 1s 21h.
+The adapter released in this repository is the result of this final, optimized training.
+
+| Phase | Summary | Runtime |
+|--------|----------|----------|
+| **1** | Fine-tune again from scratch by applying all the insights from previous experiments. | 1d 21h |
 
 > **Key Insight:** The final model is highly effective at **context extraction (RAG)** for its identity, proving that RAG is a more stable method for storing factual/identity information than relying solely on fine-tuning.
 
-📊 W&B Log (Phase 1F):  
-[wandb.ai/VoidNova/phi-2-2.7B_qlora_alpaca-51.8k_identity-model-232_squadv2-15k/runs/bpju3d09](https://wandb.ai/VoidNova/phi-2-2.7B_qlora_alpaca-51.8k_identity-model-232_squadv2-15k/runs/bpju3d09?nw=nwuseradhafajp)
+📊 **W&B Log (Phase 1F):** [wandb.ai/VoidNova/.../runs/bpju3d09](https://wandb.ai/VoidNova/phi-2-2.7B_qlora_alpaca-51.8k_identity-model-232_squadv2-15k/runs/bpju3d09?nw=nwuseradhafajp)
+📊 **W&B Log (Final):** [wandb.ai/VoidNova/.../runs/rx5fih5v](https://wandb.ai/VoidNova/phi-2_qlora_ZeroChat/runs/rx5fih5v?nw=nwuseradhafajp)
 
 ---
 

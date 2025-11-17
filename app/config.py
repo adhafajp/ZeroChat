@@ -12,6 +12,6 @@ PROMPT_FORMAT = """<|im_start|>system
 {instruction}<|im_end|>
 <|im_start|>assistant
 """
-MAX_NEW_TOKEN=256
+MAX_NEW_TOKEN=512
 DO_SAMPLE=False
 REPETITION_PENALTY=1.1
