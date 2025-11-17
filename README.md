@@ -57,6 +57,7 @@ Stage 1:
 Stage 2:
 
 After gathering all the insights from the initial experiments (1A-1F), fine-tuning was restarted completely from scratch. By applying all the lessons learned, this new training process achieved better and more balanced performance in just 1s 21h.
+
 The adapter released in this repository is the result of this final, optimized training.
 
 | Phase | Summary | Runtime |
@@ -65,8 +66,8 @@ The adapter released in this repository is the result of this final, optimized t
 
 > **Key Insight:** The final model is highly effective at **context extraction (RAG)** for its identity, proving that RAG is a more stable method for storing factual/identity information than relying solely on fine-tuning.
 
-📊 **W&B Log (Phase 1F):** [wandb.ai/VoidNova/.../runs/bpju3d09](https://wandb.ai/VoidNova/phi-2-2.7B_qlora_alpaca-51.8k_identity-model-232_squadv2-15k/runs/bpju3d09?nw=nwuseradhafajp)
-📊 **W&B Log (Final):** [wandb.ai/VoidNova/.../runs/rx5fih5v](https://wandb.ai/VoidNova/phi-2_qlora_ZeroChat/runs/rx5fih5v?nw=nwuseradhafajp)
+* 📊 **W&B Log (Phase 1F):** [wandb.ai/VoidNova/.../runs/bpju3d09](https://wandb.ai/VoidNova/phi-2-2.7B_qlora_alpaca-51.8k_identity-model-232_squadv2-15k/runs/bpju3d09?nw=nwuseradhafajp)
+* 📊 **W&B Log (Final):** [wandb.ai/VoidNova/.../runs/rx5fih5v](https://wandb.ai/VoidNova/phi-2_qlora_ZeroChat/runs/rx5fih5v?nw=nwuseradhafajp)
 
 ---
 
